@@ -3,34 +3,35 @@
  */
 import pdfDataExtraction from "../src/pdf_parse/pdfDataExtraction.js";
 
+const data = JSON.parse(process.env.BASE_UNITTEST);
 
 describe('pdf data extraction test', () => {
   test('should extract document number correctly', async() => {
-    const text = "Cédula de Ciudadanía: 1.140.819.985";
+    const text = `Cédula de Ciudadanía: ${data.cedula}`;
     const result = await pdfDataExtraction(text);
 
-    expect(result.numeroDocumento).toBe("1.140.819.985");
+    expect(result.numeroDocumento).toBe(`${data.cedula}`);
   });
     
   test('Should extract expedition day correctly', async() => {
-    const text = "Fecha de Expedición: 26 DE MARZO DE 2007";
+    const text = `Fecha de Expedición: ${data.FechaExpedicion}`;
     const result = await pdfDataExtraction(text);
 
-    expect(result.fechaExpedicion).toBe("26 DE MARZO DE 2007");
+    expect(result.fechaExpedicion).toBe(`${data.FechaExpedicion}`);
   });
 
   test('should extract expedition place correctly', async() => {
-    const text = "Lugar de Expedición: BARRANQUILLA - ATLANTICO";
+    const text = `Lugar de Expedición: ${data.LugarExpedicion}`;
     const result = await pdfDataExtraction(text);
 
-    expect(result.lugarExpedicion).toBe("BARRANQUILLA - ATLANTICO")
+    expect(result.lugarExpedicion).toBe(`${data.LugarExpedicion}`)
   });
 
   test('should extract document owner name correctly', async() => {
-    const text = "A nombre de: DORA JOSEFINA LOPEZ GOMEZ";
+    const text = `A nombre de: ${data.nombre}`;
     const result = await pdfDataExtraction(text);
 
-    expect(result.nombre).toBe("DORA JOSEFINA LOPEZ GOMEZ");
+    expect(result.nombre).toBe(`${data.nombre}`);
   });
 
   test('should extract vigency status correctly', async() => {
