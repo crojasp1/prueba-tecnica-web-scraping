@@ -1,0 +1,27 @@
+{
+  "name": "curso_playwright",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "parallel": "node parallel_test/runParallelTest.js",
+    "automation": "node src/automation/runCheck.js",
+    "integrated": "npx playwright test integratedTest",
+    "report": "npx playwright show-report",
+    "unitTest": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.10.1",
+    "jest": "^30.2.0"
+  },
+  "dependencies": {
+    "jimp": "^1.6.0",
+    "pdf-parse": "^1.1.1",
+    "tesseract.js": "^6.0.1"
+  }
+}
